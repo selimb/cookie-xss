@@ -2,6 +2,8 @@
 
 Example of how XSS attacks can bypass even traditional cookie authentication with adequate CSRF protection.
 
+This was produced to support my argument in https://github.com/OWASP/CheatSheetSeries/issues/375.
+
 ## Introduction
 
 This repo contains a traditional server-rendered Django application:
